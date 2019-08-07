@@ -84,7 +84,7 @@ function handleMessage(sender_psid, received_message, page_access_token) {
     }
 
     // Sends the response message
-    callSendAPI(sender_psid, response);
+    callSendAPI(sender_psid, response, page_access_token);
 }
 
 // Handles messaging_postbacks events
