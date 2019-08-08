@@ -15,9 +15,12 @@ router.get('/', function(req, res, next) {
     const intervalId = setInterval(() => {
         res.write(`id: ${messageId}\n`);
         res.write(`data: Test Message -- ${Date.now()}\n\n`);
-        res.write(eventSources.toString());
+        if (eventSources.length !== 0) {
+            res.write(eventSources.toString());
+            eventSources = [];
+            eventSources.length = 0;
+        }
         console.log(eventSources);
-        this.eventSources = [];
         messageId += 1;
     }, 1000);
 
