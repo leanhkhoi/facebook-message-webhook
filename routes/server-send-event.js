@@ -19,6 +19,8 @@ router.get('/', function(req, res, next) {
             res.write(`data: ${JSON.stringify(eventSources)}\n\n`);
             // never set eventSources = [], because eventSources is cursor (reference) , not real object
             eventSources.length = 0;
+        } else {
+            res.write(`data: Empty Data\n\n`);
         }
     }, 1000);
 
