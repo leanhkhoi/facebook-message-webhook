@@ -10,10 +10,8 @@ router.get('/', function(req, res, next) {
     });
     res.write('/n');
     const intervalId = setInterval(() => {
-        console.log("before send: " + eventSources);
-        res.write(`id: 123124125`);
+        res.write(`id: 1123456\n`);
         if (eventSources.length !== 0) {
-            console.log("prepare send: " + eventSources);
             res.write(`data: ${JSON.stringify(eventSources)}\n\n`);
             // never set eventSources = [], because eventSources is cursor (reference) , not real object
             eventSources.length = 0;
