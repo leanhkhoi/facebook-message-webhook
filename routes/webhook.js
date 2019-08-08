@@ -3,7 +3,7 @@ var router = express.Router();
 var request = require('request');
 var eventSources = require('./event-data');
 
-var user_access_token = 'EAAGiFu0iDlIBABa9OMRUwqktGEp6hrEi5GxoT6UGgKfcIEEMkFmzETkvEtx2bWYPZBS7WZBe9dLJsnkMlOQOU9HutIwACOhvYFpfDAg3Af9sbOSrQQ0H0N4IierjREZChVEm43DwrAzd6mbFC2ZCarj1KoHusf5ePdRId9hey6jm62eZA36d0ltR1lSsswnUZD';
+var user_access_token = process.env.USER_ACCESS_TOKEN;
 /* GET users listing. */
 router.get('/', function(req, res) {
     /** UPDATE YOUR VERIFY TOKEN **/
