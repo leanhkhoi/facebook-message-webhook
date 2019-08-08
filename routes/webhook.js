@@ -40,6 +40,7 @@ router.post('/', function(req, res) {
     if (body.object === 'page') {
         // push data from facebook income message to event array
         eventSources.push(body);
+        console.log(eventSources);
 
         // Iterate over each entry - there may be multiple if batched
         body.entry.forEach(function(entry) {
