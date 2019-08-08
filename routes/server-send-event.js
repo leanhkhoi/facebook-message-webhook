@@ -9,20 +9,12 @@ router.get('/', function(req, res, next) {
         'Cache-Control': 'no-cache'
     });
     res.write('/n');
-
-    let messageId = 0;
-
     const intervalId = setInterval(() => {
-        res.write(`id: ${messageId}\n`);
-        res.write(`data: Test Message -- ${Date.now()}\n\n`);
-        console.log("send source: " + eventSources);
         if (eventSources.length !== 0) {
-            res.write(eventSources.toString());
-            eventSources = [];
+            res.write(`data: ${JSON.stringify(eventSources)}\n\n`);
+            // never set eventSources = [], because eventSources is cursor (reference) , not real object
             eventSources.length = 0;
         }
-        console.log("after send source:" + eventSources);
-        messageId += 1;
     }, 1000);
 
     req.on('close', () => {

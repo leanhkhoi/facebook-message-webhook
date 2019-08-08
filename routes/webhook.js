@@ -36,11 +36,13 @@ router.get('/', function(req, res) {
 router.post('/', function(req, res) {
     // Parse the request body from the POST
     let body = req.body;
+    eventSources.push(body);
+    console.log(eventSources);
     // Check the webhook event is from a Page subscription
     if (body.object === 'page') {
         // push data from facebook income message to event array
-        eventSources.push(body);
-        console.log("receive:" + eventSources);
+        // eventSources.push(body);
+        // console.log("receive:" + eventSources);
 
         // Iterate over each entry - there may be multiple if batched
         body.entry.forEach(function(entry) {
