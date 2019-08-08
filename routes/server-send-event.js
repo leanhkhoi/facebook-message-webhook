@@ -11,6 +11,7 @@ router.get('/', function(req, res, next) {
     res.write('/n');
     const intervalId = setInterval(() => {
         console.log("before send: " + eventSources);
+        res.write(`id: 123124125`);
         if (eventSources.length !== 0) {
             console.log("prepare send: " + eventSources);
             res.write(`data: ${JSON.stringify(eventSources)}\n\n`);
