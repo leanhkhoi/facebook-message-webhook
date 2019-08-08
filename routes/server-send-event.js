@@ -8,9 +8,13 @@ router.get('/', function(req, res, next) {
         'Content-Type': 'text/event-stream',
         'Cache-Control': 'no-cache'
     });
+
     res.write('/n');
+    let messageId = 0;
+
     const intervalId = setInterval(() => {
-        res.write(`id: 1123456\n`);
+        res.write(`id: ${messageId}\n`);
+        messageId += 1;
         if (eventSources.length !== 0) {
             res.write(`data: ${JSON.stringify(eventSources)}\n\n`);
             // never set eventSources = [], because eventSources is cursor (reference) , not real object
