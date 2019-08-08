@@ -16,6 +16,7 @@ router.get('/', function(req, res, next) {
         res.write(`id: ${messageId}\n`);
         res.write(`data: Test Message -- ${Date.now()}\n\n`);
         res.write(eventSources.toString());
+        console.log(eventSources);
         this.eventSources = [];
         messageId += 1;
     }, 1000);
