@@ -15,8 +15,8 @@ router.get('/', function(req, res, next) {
     const intervalId = setInterval(() => {
         res.write(`id: ${messageId}\n`);
         res.write(`data: Test Message -- ${Date.now()}\n\n`);
+        console.log(eventSources);
         if (eventSources.length !== 0) {
-            console.log(eventSources.toString());
             res.write(eventSources.toString());
             eventSources = [];
             eventSources.length = 0;
