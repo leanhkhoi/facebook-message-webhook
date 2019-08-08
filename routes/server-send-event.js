@@ -16,6 +16,7 @@ router.get('/', function(req, res, next) {
         res.write(`id: ${messageId}\n`);
         res.write(`data: Test Message -- ${Date.now()}\n\n`);
         if (eventSources.length !== 0) {
+            console.log(eventSources.toString());
             res.write(eventSources.toString());
             eventSources = [];
             eventSources.length = 0;
