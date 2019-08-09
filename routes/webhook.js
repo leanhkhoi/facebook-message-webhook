@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var request = require('request');
-var eventSources = require('./event-data');
+var socketIO = require('../api/socket-io-api');
 
 var user_access_token = process.env.USER_ACCESS_TOKEN;
+const NOTIFY_FACEBOOK_MESSAGE_KEY = 'facebook_page_message';
+
 /* GET users listing. */
 router.get('/', function(req, res) {
     /** UPDATE YOUR VERIFY TOKEN **/
@@ -36,13 +38,10 @@ router.get('/', function(req, res) {
 router.post('/', function(req, res) {
     // Parse the request body from the POST
     let body = req.body;
-    eventSources.push(body);
-    console.log(eventSources);
+
     // Check the webhook event is from a Page subscription
     if (body.object === 'page') {
-        // push data from facebook income message to event array
-        // eventSources.push(body);
-        // console.log("receive:" + eventSources);
+        socketIO.sendNotification(NOTIFY_FACEBOOK_MESSAGE_KEY, body);
 
         // Iterate over each entry - there may be multiple if batched
         body.entry.forEach(function(entry) {

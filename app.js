@@ -37,6 +37,6 @@ app.use(cors({
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/webhook', webhookRouter);
-app.use('/server-send-event', serverSendEvent);
+//app.use('/server-send-event', serverSendEvent);
 
 module.exports = app;
